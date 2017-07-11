@@ -1,0 +1,9 @@
+{
+    "id" : "Compass",
+    "version" : "0.1.0-SNAPSHOT",
+    "author" : "",
+    "displayName" : "Compass",
+    "description" : "",
+    "dependencies" : [],
+    "serverSideOnly" : false
+}
