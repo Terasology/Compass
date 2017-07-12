@@ -16,13 +16,33 @@
 package org.terasology.compass;
 
 
+import org.terasology.logic.players.LocalPlayer;
+import org.terasology.registry.In;
 import org.terasology.rendering.nui.layers.hud.CoreHudWidget;
 import org.terasology.rendering.nui.widgets.UILoadBar;
+import org.terasology.rendering.nui.databinding.ReadOnlyBinding;
+import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.registry.CoreRegistry;
+import org.terasology.logic.location.LocationComponent;
 
 public class CompassWindow extends CoreHudWidget {
+    @In
+    LocalPlayer localPlayer;
 
     @Override
     public void initialise(){
-        UILoadBar thirst = find("compass", UILoadBar.class);
+        UILoadBar compass = find("compass", UILoadBar.class);
+
+        compass.bindVisible(new ReadOnlyBinding<Boolean>() {
+            @Override
+            public Boolean get() {
+                EntityRef character = CoreRegistry.get(LocalPlayer.class).getCharacterEntity();
+                return character != null;
+            }
+        });
+    }
+
+    public float update(){
+        return localPlayer.getCharacterEntity().getComponent(LocationComponent.class).getWorldRotation().getYaw();
     }
 }
