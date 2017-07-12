@@ -1,18 +1,19 @@
+
 {
   "type": "CompassWindow",
   "skin": "HUD",
   "contents": {
     "type": "relativeLayout",
-      "contents": [
-        {
-          "type": "UIText",
-          "layoutInfo": {
-            "position-horizontal-center": {},
-            "position-vertical-center": {},
-            "height": 100,
-            "width": 100
-          }
+    "contents": [
+      {
+        "type": "UILoadBar",
+        "id": "compass",
+        "animate": false,
+        "layoutInfo": {
+          "width": 200,
+          "height": 10
         }
-      ]
+      }
+    ]
   }
 }
