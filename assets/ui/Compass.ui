@@ -1,5 +1,18 @@
 {
   "type": "CompassWindow",
   "skin": "HUD",
-  "contents": []
+  "contents": {
+    "type": "relativeLayout",
+      "contents": [
+        {
+          "type": "UIText",
+          "layoutInfo": {
+            "position-horizontal-center": {},
+            "position-vertical-center": {},
+            "height": 100,
+            "width": 100
+          }
+        }
+      ]
+  }
 }
