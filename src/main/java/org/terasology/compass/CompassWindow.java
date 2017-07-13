@@ -16,33 +16,37 @@
 package org.terasology.compass;
 
 
+import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.layers.hud.CoreHudWidget;
 import org.terasology.rendering.nui.widgets.UILoadBar;
 import org.terasology.rendering.nui.databinding.ReadOnlyBinding;
 import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.registry.CoreRegistry;
-import org.terasology.logic.location.LocationComponent;
+import org.terasology.logic.characters.CharacterMoveInputEvent;
+import org.terasology.rendering.nui.widgets.UIText;
 
-public class CompassWindow extends CoreHudWidget {
+
+public class CompassWindow extends CoreHudWidget{
+    UIText compass;
     @In
     LocalPlayer localPlayer;
 
     @Override
     public void initialise(){
-        UILoadBar compass = find("compass", UILoadBar.class);
-
+        compass = find("compass", UIText.class);
         compass.bindVisible(new ReadOnlyBinding<Boolean>() {
             @Override
             public Boolean get() {
-                EntityRef character = CoreRegistry.get(LocalPlayer.class).getCharacterEntity();
+                EntityRef character = localPlayer.getCharacterEntity();
                 return character != null;
             }
         });
     }
 
-    public float update(){
-        return localPlayer.getCharacterEntity().getComponent(LocationComponent.class).getWorldRotation().getYaw();
+    @ReceiveEvent
+    public void characterMoved(CharacterMoveInputEvent event){
+        compass.setText(Float.toString(event.getYaw()));
     }
+
 }

@@ -6,12 +6,14 @@
     "type": "relativeLayout",
     "contents": [
       {
-        "type": "UILoadBar",
+        "type": "UIText",
         "id": "compass",
         "animate": false,
+        "text": "180",
         "layoutInfo": {
-          "width": 200,
-          "height": 10
+          "width": 50,
+          "height": 50,
+          "margin-from-left": 100
         }
       }
     ]
