@@ -1,4 +1,3 @@
-
 {
   "type": "CompassWindow",
   "skin": "HUD",
@@ -7,13 +6,12 @@
     "contents": [
       {
         "type": "UIText",
+        "readOnly": true,
         "id": "compass",
-        "animate": false,
-        "text": "180",
+        "text": "",
         "layoutInfo": {
           "width": 50,
-          "height": 50,
-          "margin-from-left": 100
+          "height": 50
         }
       }
     ]
