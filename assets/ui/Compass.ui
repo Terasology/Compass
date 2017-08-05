@@ -7,11 +7,12 @@
       {
         "type": "UIText",
         "readOnly": true,
-        "id": "compass",
-        "text": "",
+        "multiline": false,
+        "id": "test",
         "layoutInfo": {
-          "width": 50,
-          "height": 50
+          "use-content-height": true,
+          "position-top": {},
+          "width": 100
         }
       }
     ]
