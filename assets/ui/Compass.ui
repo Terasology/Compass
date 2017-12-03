@@ -1,27 +1,27 @@
 {
-  "type": "CompassWindow",
-  "skin": "HUD",
-  "contents": {
-    "type": "relativeLayout",
-    "contents": [
+  "type" : "CompassHUDElement",
+  "id" : "compass",
+  "contents" : {
+    "type" : "relativeLayout",
+    "contents" : [
       {
-        "type": "UIText",
-        "readOnly": true,
-        "multiline": false,
-        "id": "test",
-        "layoutInfo": {
-          "use-content-height": true,
-          "position-top": {},
-          "width": 100
-        }
-      },
-      {
-        "type": "UIImage",
-        "image":"Compass:compass-needle",
-        "id":"needle",
-        "layoutInfo": {
-          "width": 100,
-          "height": 64
+        "type" : "ColumnLayout",
+        "contents" : [
+          {
+            "type" : "CompassWindow",
+            "id" : "compassWindow",
+            "skin": "framed"
+          }
+        ],
+        "layoutInfo" : {
+          "use-content-width" : true,
+          "use-content-height" : true,
+          "position-left" : {
+            "target" : "LEFT"
+          },
+          "position-top" : {
+            "target" : "TOP"
+          }
         }
       }
     ]
