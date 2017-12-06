@@ -57,13 +57,11 @@ public class CompassWindow extends CoreWidget {
         if (locationComponent == null) {
             return;
         }
-        //logger.info("In here");
         drawNeedle(canvas, locationComponent);
-
     }
 
     private void drawNeedle(Canvas canvas, LocationComponent locationComponent) {
-        // draw arrowhead
+        // draw compass-needle
         Texture arrowhead = Assets.getTexture("Compass:compass-needle").get();
         // Drawing textures with rotation is not yet supported, see #1926
         // We therefore use a workaround based on mesh drawing
@@ -75,7 +73,6 @@ public class CompassWindow extends CoreWidget {
         int arrowX = (width - arrowWidth) / 2;
         int arrowY = (height - arrowHeight) /2;
         Rect2i screenArea = Rect2i.createFromMinAndSize(arrowX, arrowY, arrowWidth, arrowHeight);
-//        canvas.drawTexture(arrowhead, arrowX, arrowY, rotation);
 
         // UITexture should be used here, but it doesn't work
         Material material = Assets.getMaterial("engine:UILitMesh").get();
@@ -83,38 +80,11 @@ public class CompassWindow extends CoreWidget {
         Mesh mesh = Assets.getMesh("engine:UIBillboard").get();
         // The scaling seems to be completely wrong - 0.8f looks ok
         Quat4f q = locationComponent.getWorldRotation();
-        // convert to Euler yaw angle
-        // TODO: move into quaternion
-        //float rotation = -(float) Math.atan2(2.0 * (q.y * q.w + q.x * q.z), 1.0 - 2.0 * (q.y * q.y - q.z * q.z));
+
         float rotation = q.getYaw();
         canvas.drawMesh(mesh, material, screenArea, new Quat4f(0, 0, rotation), new Vector3f(0,0,0), 0.8f);
-        //logger.info("here");
     }
 
-    /*@In
-    private LocalPlayer localPlayer;
-
-    @Override
-    public void initialise() {
-        UIText compass = find("test", UIText.class);
-        compass.bindVisible(new ReadOnlyBinding<Boolean>() {
-            @Override
-            public Boolean get() {
-                EntityRef character = localPlayer.getCharacterEntity();
-                logger.info("This is shit" + (character != null));
-                return character != null;
-            }
-        });
-        compass.bindText(new ReadOnlyBinding<String>() {
-             @Override
-             public String get() {
-                 EntityRef character = localPlayer.getCharacterEntity();
-                 Quat4f rotation = character.getComponent(LocationComponent.class).getWorldRotation();
-                 return "" + rotation.getYaw()*180/TeraMath.PI;
-             }
-         }
-        );
-    }*/
 
     public void bindTargetEntity(Binding<EntityRef> binding) {
         targetEntityBinding = binding;
