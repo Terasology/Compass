@@ -72,8 +72,8 @@ public class CompassWindow extends CoreWidget {
         int height = getPreferredContentSize().getY();
         int arrowWidth = arrowhead.getWidth() * 2;
         int arrowHeight = arrowhead.getHeight() * 2;
-        int arrowX = (width - arrowWidth) / 15;
-        int arrowY = (height - arrowHeight) /15;
+        int arrowX = (width - arrowWidth) / 2;
+        int arrowY = (height - arrowHeight) /2;
         Rect2i screenArea = Rect2i.createFromMinAndSize(arrowX, arrowY, arrowWidth, arrowHeight);
 //        canvas.drawTexture(arrowhead, arrowX, arrowY, rotation);
 
@@ -87,7 +87,7 @@ public class CompassWindow extends CoreWidget {
         // TODO: move into quaternion
         //float rotation = -(float) Math.atan2(2.0 * (q.y * q.w + q.x * q.z), 1.0 - 2.0 * (q.y * q.y - q.z * q.z));
         float rotation = q.getYaw();
-        canvas.drawMesh(mesh, material, screenArea, new Quat4f(0, 0, rotation), new Vector3f(), 0.8f);
+        canvas.drawMesh(mesh, material, screenArea, new Quat4f(0, 0, rotation), new Vector3f(0,0,0), 0.8f);
         //logger.info("here");
     }
 
@@ -129,7 +129,7 @@ public class CompassWindow extends CoreWidget {
     }
 
     public Vector2i getPreferredContentSize() {
-        return new Vector2i(25, 25);
+        return new Vector2i(50, 50);
     }
 
 }
