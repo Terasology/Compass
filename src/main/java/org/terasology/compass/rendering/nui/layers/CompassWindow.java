@@ -21,7 +21,6 @@ import org.slf4j.LoggerFactory;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.logic.location.LocationComponent;
 import org.terasology.math.Border;
-import org.terasology.math.TeraMath;
 import org.terasology.math.geom.Quat4f;
 import org.terasology.math.geom.Rect2i;
 import org.terasology.math.geom.Vector2i;
@@ -71,7 +70,7 @@ public class CompassWindow extends CoreWidget {
         int arrowWidth = arrowhead.getWidth() * 2;
         int arrowHeight = arrowhead.getHeight() * 2;
         int arrowX = (width - arrowWidth) / 2;
-        int arrowY = (height - arrowHeight) /2;
+        int arrowY = (height - arrowHeight) / 2;
         Rect2i screenArea = Rect2i.createFromMinAndSize(arrowX, arrowY, arrowWidth, arrowHeight);
 
         // UITexture should be used here, but it doesn't work
@@ -82,7 +81,7 @@ public class CompassWindow extends CoreWidget {
         Quat4f q = locationComponent.getWorldRotation();
 
         float rotation = q.getYaw();
-        canvas.drawMesh(mesh, material, screenArea, new Quat4f(0, 0, rotation), new Vector3f(0,0,0), 0.8f);
+        canvas.drawMesh(mesh, material, screenArea, new Quat4f(0, 0, rotation), new Vector3f(0, 0, 0), 0.8f);
     }
 
 
