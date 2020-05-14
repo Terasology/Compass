@@ -1,10 +1,10 @@
 {
-    "id" : "Compass",
-    "version" : "0.1.0-SNAPSHOT",
-    "author" : "",
-    "displayName" : "Compass",
-    "description" : "",
-    "dependencies" : [],
-    "serverSideOnly" : false,
-    "isAsset": true
+    "id": "Compass",
+    "version": "1.0.0",
+    "author": "The Terasology Foundation",
+    "displayName": "Compass",
+    "description": "This module augments Terasology with a Compass HUD element",
+    "dependencies": [],
+    "serverSideOnly": false,
+    "isAugmentation": true
 }
