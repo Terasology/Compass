@@ -1,37 +1,26 @@
-/*
- * Copyright 2017 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.compass.rendering.nui.layers;
 
 
+import org.joml.Rectanglei;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.logic.location.LocationComponent;
-import org.terasology.math.Border;
+import org.terasology.math.JomlUtil;
 import org.terasology.math.geom.Quat4f;
-import org.terasology.math.geom.Rect2i;
-import org.terasology.math.geom.Vector2i;
+import org.joml.Vector2i;
 import org.terasology.math.geom.Vector3f;
 import org.terasology.rendering.assets.material.Material;
 import org.terasology.rendering.assets.mesh.Mesh;
 import org.terasology.rendering.assets.texture.Texture;
-import org.terasology.rendering.nui.Canvas;
-import org.terasology.rendering.nui.CoreWidget;
-import org.terasology.rendering.nui.databinding.Binding;
-import org.terasology.rendering.nui.databinding.DefaultBinding;
+import org.terasology.nui.Border;
+import org.terasology.nui.Canvas;
+import org.terasology.nui.CoreWidget;
+import org.terasology.nui.databinding.Binding;
+import org.terasology.nui.databinding.DefaultBinding;
+import org.terasology.rendering.nui.CanvasUtility;
 import org.terasology.utilities.Assets;
 
 
@@ -65,13 +54,13 @@ public class CompassWindow extends CoreWidget {
         // Drawing textures with rotation is not yet supported, see #1926
         // We therefore use a workaround based on mesh drawing
         // The width of the screenArea is doubled to avoid clipping issues when the texture is rotated
-        int width = getPreferredContentSize().getX();
-        int height = getPreferredContentSize().getY();
+        int width = getPreferredContentSize().x();
+        int height = getPreferredContentSize().y();
         int arrowWidth = arrowhead.getWidth() * 2;
         int arrowHeight = arrowhead.getHeight() * 2;
         int arrowX = (width - arrowWidth) / 2;
         int arrowY = (height - arrowHeight) / 2;
-        Rect2i screenArea = Rect2i.createFromMinAndSize(arrowX, arrowY, arrowWidth, arrowHeight);
+        Rectanglei screenArea = JomlUtil.rectangleiFromMinAndSize(arrowX, arrowY, arrowWidth, arrowHeight);
 
         // UITexture should be used here, but it doesn't work
         Material material = Assets.getMaterial("engine:UILitMesh").get();
@@ -81,7 +70,7 @@ public class CompassWindow extends CoreWidget {
         Quat4f q = locationComponent.getWorldRotation();
 
         float rotation = q.getYaw();
-        canvas.drawMesh(mesh, material, screenArea, new Quat4f(0, 0, rotation), new Vector3f(0, 0, 0), 0.8f);
+        CanvasUtility.drawMesh(canvas, mesh, material, JomlUtil.from(screenArea), new Quat4f(0, 0, rotation), new Vector3f(0, 0, 0), 0.8f);
     }
 
 
