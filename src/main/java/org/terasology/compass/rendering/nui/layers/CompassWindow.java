@@ -4,24 +4,24 @@ package org.terasology.compass.rendering.nui.layers;
 
 
 import org.joml.Rectanglei;
+import org.joml.Vector2i;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.logic.location.LocationComponent;
-import org.terasology.math.JomlUtil;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.logic.location.LocationComponent;
+import org.terasology.engine.math.JomlUtil;
+import org.terasology.engine.rendering.assets.material.Material;
+import org.terasology.engine.rendering.assets.mesh.Mesh;
+import org.terasology.engine.rendering.assets.texture.Texture;
+import org.terasology.engine.rendering.nui.CanvasUtility;
+import org.terasology.engine.utilities.Assets;
 import org.terasology.math.geom.Quat4f;
-import org.joml.Vector2i;
 import org.terasology.math.geom.Vector3f;
-import org.terasology.rendering.assets.material.Material;
-import org.terasology.rendering.assets.mesh.Mesh;
-import org.terasology.rendering.assets.texture.Texture;
 import org.terasology.nui.Border;
 import org.terasology.nui.Canvas;
 import org.terasology.nui.CoreWidget;
 import org.terasology.nui.databinding.Binding;
 import org.terasology.nui.databinding.DefaultBinding;
-import org.terasology.rendering.nui.CanvasUtility;
-import org.terasology.utilities.Assets;
 
 
 public class CompassWindow extends CoreWidget {
@@ -70,7 +70,8 @@ public class CompassWindow extends CoreWidget {
         Quat4f q = locationComponent.getWorldRotation();
 
         float rotation = q.getYaw();
-        CanvasUtility.drawMesh(canvas, mesh, material, JomlUtil.from(screenArea), new Quat4f(0, 0, rotation), new Vector3f(0, 0, 0), 0.8f);
+        CanvasUtility.drawMesh(canvas, mesh, material, JomlUtil.from(screenArea), new Quat4f(0, 0, rotation),
+                new Vector3f(0, 0, 0), 0.8f);
     }
 
 

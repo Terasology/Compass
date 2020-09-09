@@ -1,26 +1,26 @@
 {
-  "type" : "CompassHUDElement",
-  "id" : "compass",
-  "contents" : {
-    "type" : "relativeLayout",
-    "contents" : [
+  "type": "CompassHUDElement",
+  "id": "compass",
+  "contents": {
+    "type": "relativeLayout",
+    "contents": [
       {
-        "type" : "ColumnLayout",
-        "contents" : [
+        "type": "ColumnLayout",
+        "contents": [
           {
-            "type" : "CompassWindow",
-            "id" : "compassWindow",
+            "type": "CompassWindow",
+            "id": "compassWindow",
             "skin": "framed"
           }
         ],
-        "layoutInfo" : {
-          "use-content-width" : true,
-          "use-content-height" : true,
-          "position-left" : {
-            "target" : "LEFT"
+        "layoutInfo": {
+          "use-content-width": true,
+          "use-content-height": true,
+          "position-left": {
+            "target": "LEFT"
           },
-          "position-top" : {
-            "target" : "TOP"
+          "position-top": {
+            "target": "TOP"
           }
         }
       }

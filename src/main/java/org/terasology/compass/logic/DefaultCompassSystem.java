@@ -1,14 +1,15 @@
 // Copyright 2020 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
-package org.terasology.logic.players;
+package org.terasology.compass.logic;
 
 import org.terasology.compass.rendering.nui.layers.CompassHUDElement;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.logic.players.LocalPlayer;
+import org.terasology.engine.registry.In;
+import org.terasology.engine.rendering.nui.NUIManager;
 import org.terasology.math.geom.Rect2f;
-import org.terasology.registry.In;
-import org.terasology.rendering.nui.NUIManager;
 import org.terasology.nui.databinding.ReadOnlyBinding;
 
 @RegisterSystem
