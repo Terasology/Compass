@@ -5,15 +5,14 @@ package org.terasology.compass.rendering.nui.layers;
 
 import org.joml.AxisAngle4f;
 import org.joml.Quaternionf;
-import org.joml.Rectanglei;
 import org.joml.Vector2i;
 import org.joml.Vector3f;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.joml.geom.Rectanglei;
 import org.terasology.logic.location.LocationComponent;
 import org.terasology.math.Direction;
-import org.terasology.math.JomlUtil;
 import org.terasology.nui.Border;
 import org.terasology.nui.Canvas;
 import org.terasology.nui.CoreWidget;
@@ -79,7 +78,9 @@ public class CompassWindow extends CoreWidget {
 
         AxisAngle4f ax = new AxisAngle4f();
         new Quaternionf().rotationTo(Direction.FORWARD.asVector3f(), orthoForward).get(ax);
-        CanvasUtility.drawMesh(canvas, mesh, material, JomlUtil.from(screenArea), JomlUtil.from(new Quaternionf().setAngleAxis(-ax.angle * Math.signum(ax.y) + Math.PI, 0, 0, 1)), JomlUtil.from(new Vector3f(0, 0, 0)), 0.8f);
+        CanvasUtility.drawMesh(canvas, mesh, material, screenArea,
+            new Quaternionf().setAngleAxis(-ax.angle * Math.signum(ax.y) + Math.PI, 0, 0, 1), new Vector3f(0, 0, 0),
+            0.8f);
     }
 
 
