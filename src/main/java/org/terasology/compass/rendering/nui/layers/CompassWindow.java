@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.compass.rendering.nui.layers;
 
-
 import org.joml.AxisAngle4f;
 import org.joml.Quaternionf;
 import org.joml.Vector2i;
@@ -24,7 +23,6 @@ import org.terasology.rendering.assets.mesh.Mesh;
 import org.terasology.rendering.assets.texture.Texture;
 import org.terasology.rendering.nui.CanvasUtility;
 import org.terasology.utilities.Assets;
-
 
 public class CompassWindow extends CoreWidget {
     //private UIText compass;
@@ -82,7 +80,6 @@ public class CompassWindow extends CoreWidget {
             new Quaternionf().setAngleAxis(-ax.angle * Math.signum(ax.y) + Math.PI, 0, 0, 1), new Vector3f(0, 0, 0),
             0.8f);
     }
-
 
     public void bindTargetEntity(Binding<EntityRef> binding) {
         targetEntityBinding = binding;
