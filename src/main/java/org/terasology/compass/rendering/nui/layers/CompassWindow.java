@@ -3,6 +3,7 @@
 package org.terasology.compass.rendering.nui.layers;
 
 
+import org.joml.Quaternionf;
 import org.terasology.joml.geom.Rectanglei;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,7 +68,7 @@ public class CompassWindow extends CoreWidget {
         material.setTexture("texture", arrowhead);
         Mesh mesh = Assets.getMesh("engine:UIBillboard").get();
         // The scaling seems to be completely wrong - 0.8f looks ok
-        Quat4f q = locationComponent.getWorldRotation();
+        Quat4f q = JomlUtil.from(locationComponent.getWorldRotation(new Quaternionf()));
 
         float rotation = q.getYaw();
         CanvasUtility.drawMesh(canvas, mesh, material, JomlUtil.from(screenArea), new Quat4f(0, 0, rotation), new Vector3f(0, 0, 0), 0.8f);
