@@ -4,6 +4,7 @@ package org.terasology.compass.rendering.nui.layers;
 
 
 import org.joml.Quaternionf;
+import org.joml.Vector3f;
 import org.terasology.joml.geom.Rectanglei;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,6 @@ import org.terasology.logic.location.LocationComponent;
 import org.terasology.math.JomlUtil;
 import org.terasology.math.geom.Quat4f;
 import org.joml.Vector2i;
-import org.terasology.math.geom.Vector3f;
 import org.terasology.rendering.assets.material.Material;
 import org.terasology.rendering.assets.mesh.Mesh;
 import org.terasology.rendering.assets.texture.Texture;
@@ -71,7 +71,7 @@ public class CompassWindow extends CoreWidget {
         Quat4f q = JomlUtil.from(locationComponent.getWorldRotation(new Quaternionf()));
 
         float rotation = q.getYaw();
-        CanvasUtility.drawMesh(canvas, mesh, material, JomlUtil.from(screenArea), new Quat4f(0, 0, rotation), new Vector3f(0, 0, 0), 0.8f);
+        CanvasUtility.drawMesh(canvas, mesh, material, screenArea, new Quaternionf().rotationYXZ(0, 0, rotation), new Vector3f(0, 0, 0), 0.8f);
     }
 
 
