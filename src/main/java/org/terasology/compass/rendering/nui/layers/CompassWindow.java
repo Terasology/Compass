@@ -17,7 +17,6 @@ import org.terasology.nui.Canvas;
 import org.terasology.nui.CoreWidget;
 import org.terasology.nui.databinding.Binding;
 import org.terasology.nui.databinding.DefaultBinding;
-import org.terasology.nui.util.RectUtility;
 import org.terasology.rendering.assets.material.Material;
 import org.terasology.rendering.assets.mesh.Mesh;
 import org.terasology.rendering.assets.texture.Texture;
@@ -25,7 +24,6 @@ import org.terasology.rendering.nui.CanvasUtility;
 import org.terasology.utilities.Assets;
 
 public class CompassWindow extends CoreWidget {
-    //private UIText compass;
     private static final Logger logger = LoggerFactory.getLogger(CompassWindow.class);
     private Binding<EntityRef> targetEntityBinding = new DefaultBinding<>(EntityRef.NULL);
 
@@ -61,7 +59,7 @@ public class CompassWindow extends CoreWidget {
         int arrowX = (width - arrowWidth) / 2;
         int arrowY = (height - arrowHeight) / 2;
 
-        Rectanglei screenArea = RectUtility.createFromMinAndSize(arrowX, arrowY, arrowWidth, arrowHeight);
+        Rectanglei screenArea = new Rectanglei(arrowX, arrowY).setSize(arrowWidth, arrowHeight);
 
         // UITexture should be used here, but it doesn't work
         Material material = Assets.getMaterial("engine:UILitMesh").get();
