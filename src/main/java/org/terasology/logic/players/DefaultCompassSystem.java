@@ -1,15 +1,15 @@
 // Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
-package org.terasology.logic.players;
+package org.terasology.engine.logic.players;
 
 import org.terasology.compass.rendering.nui.layers.CompassHUDElement;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.registry.In;
+import org.terasology.engine.rendering.nui.NUIManager;
 import org.terasology.joml.geom.Rectanglef;
 import org.terasology.nui.databinding.ReadOnlyBinding;
-import org.terasology.registry.In;
-import org.terasology.rendering.nui.NUIManager;
 
 @RegisterSystem
 public class DefaultCompassSystem extends BaseComponentSystem {

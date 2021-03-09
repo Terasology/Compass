@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.compass.rendering.nui.layers;
 
-import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.rendering.nui.layers.hud.CoreHudWidget;
 import org.terasology.nui.databinding.ReadOnlyBinding;
-import org.terasology.rendering.nui.layers.hud.CoreHudWidget;
 
 public class CompassHUDElement extends CoreHudWidget {
     private static final String COMPAS_WINDOW_WIDGET_ID = "compassWindow";
